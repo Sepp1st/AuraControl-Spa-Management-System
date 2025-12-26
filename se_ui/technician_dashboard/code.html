@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Technician Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ef3976",
+                        "background-light": "#fcf8f9",
+                        "background-dark": "#221016",
+                        "text-light": "#1b0d12",
+                        "text-dark": "#f3e7eb",
+                        "surface-light": "#f8f6f6",
+                        "surface-dark": "#2c151c",
+                        "border-light": "#f3e7eb",
+                        "border-dark": "#3a1b26",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-10 lg:px-20 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-7xl flex-1">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-10 flex items-center justify-between whitespace-nowrap border-b border-solid border-border-light dark:border-border-dark px-6 py-3 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
+<div class="flex items-center gap-4">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 45.8096C19.6865 45.8096 15.4698 44.5305 11.8832 42.134C8.29667 39.7376 5.50128 36.3314 3.85056 32.3462C2.19985 28.361 1.76794 23.9758 2.60947 19.7452C3.451 15.5145 5.52816 11.6284 8.57829 8.5783C11.6284 5.52817 15.5145 3.45101 19.7452 2.60948C23.9758 1.76795 28.361 2.19986 32.3462 3.85057C36.3314 5.50129 39.7376 8.29668 42.134 11.8833C44.5305 15.4698 45.8096 19.6865 45.8096 24L24 24L24 45.8096Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-text-light dark:text-text-dark text-lg font-bold leading-tight tracking-[-0.015em]">SereneSpa</h2>
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<button class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-surface-light dark:bg-surface-dark text-text-light dark:text-text-dark gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-3 border border-border-light dark:border-border-dark">
+<span class="truncate">Olivia Chen</span>
+<span class="material-symbols-outlined text-base">expand_more</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar placeholder image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBHGot4lmFxjcl7Yzs-lFWxr0HBAQaa_1yp9sfQU00UYQa2161Pt0QnvKyJ56xVGHQnj1leZV0fOo1TqvJ85kzbJasypK8kkRrm7olQjFhYxkaykFOcMtVN_H4glpcgzVKW9TNVWMcJPCWFYY_J0CWGenxm2yYtKRLDYxLDMSU0H-1aUnLGH_hO2e44Lh68S2NdwZ7yB0f1Tw832-UgLCpt0prMoVZfY5a_Q6MsphbGyMVi_D4ZrrsQdCECNBkLok3jpqtjJzahiruH");'></div>
+</div>
+</header>
+<main class="flex flex-col gap-6 p-4 md:p-6">
+<!-- Controls: ButtonGroup and SegmentedButtons -->
+<div class="flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-3 w-full md:w-auto">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-surface-light dark:bg-surface-dark text-text-light dark:text-text-dark text-sm font-bold leading-normal tracking-[0.015em] border border-border-light dark:border-border-dark">
+<span class="truncate">Today</span>
+</button>
+<div class="flex items-center">
+<button class="flex items-center justify-center size-10 rounded-l-lg bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark">
+<span class="material-symbols-outlined text-xl">chevron_left</span>
+</button>
+<button class="flex items-center justify-center size-10 rounded-r-lg bg-surface-light dark:bg-surface-dark border-y border-r border-border-light dark:border-border-dark">
+<span class="material-symbols-outlined text-xl">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-3 w-full md:w-auto">
+<div class="flex h-10 flex-1 items-center justify-center rounded-lg bg-surface-light dark:bg-surface-dark p-1 border border-border-light dark:border-border-dark">
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-3 has-[:checked]:bg-background-light dark:has-[:checked]:bg-background-dark has-[:checked]:shadow-sm has-[:checked]:text-text-light dark:has-[:checked]:text-text-dark text-text-light/70 dark:text-text-dark/70 text-sm font-medium leading-normal">
+<span class="truncate">Day</span>
+<input class="invisible w-0" name="calendar-view" type="radio" value="Day"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-3 has-[:checked]:bg-background-light dark:has-[:checked]:bg-background-dark has-[:checked]:shadow-sm has-[:checked]:text-text-light dark:has-[:checked]:text-text-dark text-text-light/70 dark:text-text-dark/70 text-sm font-medium leading-normal">
+<span class="truncate">Week</span>
+<input checked="" class="invisible w-0" name="calendar-view" type="radio" value="Week"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-3 has-[:checked]:bg-background-light dark:has-[:checked]:bg-background-dark has-[:checked]:shadow-sm has-[:checked]:text-text-light dark:has-[:checked]:text-text-dark text-text-light/70 dark:text-text-dark/70 text-sm font-medium leading-normal">
+<span class="truncate">Month</span>
+<input class="invisible w-0" name="calendar-view" type="radio" value="Month"/>
+</label>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Request Leave</span>
+</button>
+</div>
+</div>
+<!-- CalendarPicker -->
+<div class="flex flex-wrap items-start justify-center gap-6 p-4 bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark">
+<div class="flex w-full flex-col gap-0.5">
+<div class="flex items-center p-1 justify-between">
+<p class="text-text-light dark:text-text-dark text-base font-bold leading-tight flex-1 text-center">October 2024</p>
+</div>
+<div class="grid grid-cols-7 border-t border-border-light dark:border-border-dark">
+<p class="text-text-light/70 dark:text-text-dark/70 text-[13px] font-bold leading-normal tracking-[0.015em] flex h-12 w-full items-center justify-center">SUN</p>
+<p class="text-text-light/70 dark:text-text-dark/70 text-[13px] font-bold leading-normal tracking-[0.015em] flex h-12 w-full items-center justify-center">MON</p>
+<p class="text-text-light/70 dark:text-text-dark/70 text-[13px] font-bold leading-normal tracking-[0.015em] flex h-12 w-full items-center justify-center">TUE</p>
+<p class="text-text-light/70 dark:text-text-dark/70 text-[13px] font-bold leading-normal tracking-[0.015em] flex h-12 w-full items-center justify-center">WED</p>
+<p class="text-text-light/70 dark:text-text-dark/70 text-[13px] font-bold leading-normal tracking-[0.015em] flex h-12 w-full items-center justify-center">THU</p>
+<p class="text-text-light/70 dark:text-text-dark/70 text-[13px] font-bold leading-normal tracking-[0.015em] flex h-12 w-full items-center justify-center">FRI</p>
+<p class="text-text-light/70 dark:text-text-dark/70 text-[13px] font-bold leading-normal tracking-[0.015em] flex h-12 w-full items-center justify-center">SAT</p>
+<!-- Calendar Grid Days -->
+<div class="h-28 border-r border-b border-border-light dark:border-border-dark p-1 text-sm col-start-3">29</div>
+<div class="h-28 border-r border-b border-border-light dark:border-border-dark p-1 text-sm">30</div>
+<div class="h-28 border-r border-b border-border-light dark:border-border-dark p-1 text-sm">1</div>
+<div class="h-28 border-r border-b border-border-light dark:border-border-dark p-1 text-sm">2</div>
+<div class="h-28 border-b border-border-light dark:border-border-dark p-1 text-sm">3</div>
+<div class="h-28 border-r border-b border-border-light dark:border-border-dark p-1 text-sm">4</div>
+<div class="h-28 border-r border-b border-border-light dark:border-border-dark p-1 text-sm">5</div>
+<div class="h-28 border-r border-b border-border-light dark:border-border-dark p-1 text-sm relative">
+<span class="font-semibold">6</span>
+<div class="absolute inset-x-1 bottom-1 p-1.5 rounded-lg bg-primary/20 dark:bg-primary/30 text-xs text-primary-darker dark:text-primary-lighter">
+<p class="font-bold">A. Williams</p>
+<p>Swedish Massage</p>
+</div>
+</div>
+<div class="h-28 border-r border-b border-border-light dark:border-border-dark p-1 text-sm">7</div>
+<div class="h-28 border-r border-b border-border-light dark:border-border-dark p-1 text-sm">8</div>
+<div class="h-28 border-r border-b border-border-light dark:border-border-dark p-1 text-sm bg-green-500/10">
+<span class="font-semibold">9</span>
+<div class="absolute inset-x-1 bottom-1 p-1.5 rounded-lg bg-green-500/20 text-xs text-green-800 dark:text-green-300">
+<p class="font-bold">Approved Leave</p>
+</div>
+</div>
+<div class="h-28 border-b border-border-light dark:border-border-dark p-1 text-sm bg-green-500/10">
+<span class="font-semibold">10</span>
+<div class="absolute inset-x-1 bottom-1 p-1.5 rounded-lg bg-green-500/20 text-xs text-green-800 dark:text-green-300">
+<p class="font-bold">Approved Leave</p>
+</div>
+</div>
+<div class="h-28 border-r border-b border-border-light dark:border-border-dark p-1 text-sm">11</div>
+<div class="h-28 border-r border-b border-border-light dark:border-border-dark p-1 text-sm">12</div>
+<div class="h-28 border-r border-b border-border-light dark:border-border-dark p-1 text-sm relative">
+<span class="font-semibold">13</span>
+<div class="absolute inset-x-1 bottom-1 p-1.5 rounded-lg bg-primary/20 dark:bg-primary/30 text-xs text-primary-darker dark:text-primary-lighter">
+<p class="font-bold">J. Miller</p>
+<p>Hot Stone Therapy</p>
+</div>
+</div>
+<div class="h-28 border-r border-b border-border-light dark:border-border-dark p-1 text-sm">14</div>
+<div class="h-28 border-r border-b border-border-light dark:border-border-dark p-1 text-sm">15</div>
+<div class="h-28 border-r border-b border-border-light dark:border-border-dark p-1 text-sm">16</div>
+<div class="h-28 border-b border-border-light dark:border-border-dark p-1 text-sm">17</div>
+<div class="h-28 border-r border-b border-border-light dark:border-border-dark p-1 text-sm">18</div>
+<div class="h-28 border-r border-b border-border-light dark:border-border-dark p-1 text-sm">19</div>
+<div class="h-28 border-r border-b border-border-light dark:border-border-dark p-1 text-sm">20</div>
+<div class="h-28 border-r border-b border-border-light dark:border-border-dark p-1 text-sm">21</div>
+<div class="h-28 border-r border-b border-border-light dark:border-border-dark p-1 text-sm">22</div>
+<div class="h-28 border-r border-b border-border-light dark:border-border-dark p-1 text-sm">23</div>
+<div class="h-28 border-b border-border-light dark:border-border-dark p-1 text-sm">24</div>
+<div class="h-28 border-r border-border-light dark:border-border-dark p-1 text-sm">25</div>
+<div class="h-28 border-r border-border-light dark:border-border-dark p-1 text-sm">26</div>
+<div class="h-28 border-r border-border-light dark:border-border-dark p-1 text-sm">27</div>
+<div class="h-28 border-r border-border-light dark:border-border-dark p-1 text-sm">28</div>
+<div class="h-28 border-r border-border-light dark:border-border-dark p-1 text-sm">29</div>
+<div class="h-28 border-r border-border-light dark:border-border-dark p-1 text-sm">30</div>
+<div class="h-28 p-1 text-sm">31</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</div>
+<!-- Appointment Details Modal -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+<div class="w-full max-w-md rounded-xl bg-background-light dark:bg-background-dark border border-border-light dark:border-border-dark shadow-2xl">
+<div class="flex items-center justify-between p-4 border-b border-border-light dark:border-border-dark">
+<h2 class="text-text-light dark:text-text-dark text-[22px] font-bold leading-tight tracking-[-0.015em]">Appointment Details</h2>
+<button class="flex items-center justify-center size-8 rounded-full hover:bg-surface-light dark:hover:bg-surface-dark">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+<div class="p-6 flex flex-col gap-4">
+<div class="flex justify-between items-center text-sm">
+<span class="text-text-light/70 dark:text-text-dark/70">Client Name</span>
+<span class="font-semibold">Amelia Williams</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-text-light/70 dark:text-text-dark/70">Service</span>
+<span class="font-semibold">Swedish Massage</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-text-light/70 dark:text-text-dark/70">Date &amp; Time</span>
+<span class="font-semibold">October 6, 2024 at 2:00 PM</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-text-light/70 dark:text-text-dark/70">Duration</span>
+<span class="font-semibold">60 minutes</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-text-light/70 dark:text-text-dark/70">Room</span>
+<span class="font-semibold">Tranquility Suite</span>
+</div>
+<div class="flex flex-col gap-1 text-sm">
+<span class="text-text-light/70 dark:text-text-dark/70">Client Notes</span>
+<p class="p-3 rounded-lg bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark">Prefers light pressure on the upper back due to a recent minor injury.</p>
+</div>
+</div>
+<div class="p-4 border-t border-border-light dark:border-border-dark flex justify-end">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Close</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</body></html>

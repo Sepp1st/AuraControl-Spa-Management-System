@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin: Service Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+  <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#ef3976",
+              "background-light": "#f8f6f6",
+              "background-dark": "#221016",
+              "primary-soft": "#f3e7eb",
+              "primary-soft-dark": "rgba(239, 57, 118, 0.1)",
+              "text-light": "#1b0d12",
+              "text-dark": "#f8f6f6",
+              "text-subtle-light": "#9a4c66",
+              "text-subtle-dark": "#a88e99",
+              "border-light": "#e7cfd7",
+              "border-dark": "#392a30",
+              "success": "#078859",
+              "pending": "#f59e0b",
+              "text-secondary-light": "#9a4c66",
+              "text-secondary-dark": "#b88a9a",
+              "surface-light": "#ffffff",
+              "confirmed": "#3b82f6"
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="flex flex-row min-h-screen">
+<!-- SideNavBar -->
+<aside class="bg-surface-light flex h-screen w-64 flex-col border-r border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark sticky top-0">
+  <div class="flex flex-col gap-4 p-4 h-full">
+    <div class="flex items-center gap-3 px-2">
+      <span class="material-symbols-outlined text-primary text-3xl">spa</span>
+      <div class="flex flex-col">
+        <h1 class="text-base font-bold">Serenity Spa</h1>
+        <p class="text-sm text-text-secondary-light dark:text-text-secondary-dark">Admin Panel</p>
+      </div>
+    </div>
+    <nav class="flex flex-col gap-2 mt-4 flex-grow">
+      <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-primary/20 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+        <span class="material-symbols-outlined">dashboard</span>
+        <p class="text-sm font-medium">Dashboard</p>
+      </a>
+      <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-primary/20 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+        <span class="material-symbols-outlined">calendar_month</span>
+        <p class="text-sm font-medium">Appointments</p>
+      </a>
+      <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-primary/20 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+        <span class="material-symbols-outlined fill">group</span>
+        <p class="text-sm font-medium">Customers</p>
+      </a>
+      <a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:text-primary font-semibold transition-colors" href="#">
+        <span class="material-symbols-outlined">spa</span>
+        <p class="text-sm font-medium">Services</p>
+      </a>
+      <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-primary/20 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+        <span class="material-symbols-outlined">badge</span>
+        <p class="text-sm font-medium">Technicians</p>
+      </a>
+      <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-primary/20 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+        <span class="material-symbols-outlined">bed</span>
+        <p class="text-sm font-medium">Resources</p>
+      </a>
+    </nav>
+    <div class="flex flex-col gap-1">
+      <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-primary/20 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+        <span class="material-symbols-outlined">settings</span>
+        <p class="text-sm font-medium leading-normal">Settings</p>
+      </a>
+      <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-primary/20 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+        <span class="material-symbols-outlined">logout</span>
+        <p class="text-sm font-medium">Logout</p>
+      </a>
+    </div>
+  </div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 p-8 overflow-y-auto">
+<div class="max-w-7xl mx-auto">
+<div class=" dark:bg-surface-dark rounded-xl p-6">
+<!-- PageHeading -->
+<div class="flex flex-wrap justify-between items-center gap-4 mb-8">
+<h1 class="text-[#1b0d12] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">Service Management</h1>
+<button id="openServiceModal" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined mr-2">add</span>
+<span class="truncate">Add New Service</span>
+</button>
+</div>
+<!-- Table -->
+<div class="bg-surface-light rounded-xl p-6 shadow-sm px-4 py-3 @container">
+<div class="overflow-hidden rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark">
+<table class="w-full">
+<thead class="bg-background-light dark:bg-background-dark">
+<tr class="border-b border-b-primary/20 dark:border-b-primary/20">
+<th class="px-6 py-4 text-left text-[#1b0d12] dark:text-gray-300 w-2/6 text-sm font-medium leading-normal">Service Name</th>
+<th class="px-6 py-4 text-left text-[#1b0d12] dark:text-gray-300 w-2/6 text-sm font-medium leading-normal">Short Description</th>
+<th class="px-6 py-4 text-left text-[#1b0d12] dark:text-gray-300 text-sm font-medium leading-normal">Price</th>
+<th class="px-6 py-4 text-left text-[#1b0d12] dark:text-gray-300 text-sm font-medium leading-normal">Duration</th>
+<th class="px-6 py-4 text-left text-[#1b0d12] dark:text-gray-300 text-sm font-medium leading-normal">Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-t border-t-primary/20 dark:border-t-primary/20 hover:bg-primary/10 transition-colors">
+<td class="h-[72px] px-6 py-2 text-[#1b0d12] dark:text-white text-sm font-medium leading-normal">Deep Tissue Massage</td>
+<td class="h-[72px] px-6 py-2 text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">A therapeutic massage focusing on deeper layers of muscle tissue.</td>
+<td class="h-[72px] px-6 py-2 text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">$120</td>
+<td class="h-[72px] px-6 py-2 text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">60 min</td>
+<td class="h-[72px] px-6 py-2">
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center size-8 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-primary/20 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button class="flex items-center justify-center size-8 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-red-500/20 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="border-t border-t-primary/20 dark:border-t-primary/20 hover:bg-primary/10 transition-colors">
+<td class="h-[72px] px-6 py-2 text-[#1b0d12] dark:text-white text-sm font-medium leading-normal">Signature Facial</td>
+<td class="h-[72px] px-6 py-2 text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">Our classic facial for radiant, glowing skin.</td>
+<td class="h-[72px] px-6 py-2 text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">$95</td>
+<td class="h-[72px] px-6 py-2 text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">50 min</td>
+<td class="h-[72px] px-6 py-2">
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center size-8 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-primary/20 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button class="flex items-center justify-center size-8 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-red-500/20 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="border-t border-t-primary/20 dark:border-t-primary/20 hover:bg-primary/10 transition-colors">
+<td class="h-[72px] px-6 py-2 text-[#1b0d12] dark:text-white text-sm font-medium leading-normal">Aromatherapy Massage</td>
+<td class="h-[72px] px-6 py-2 text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">Combines soft, gentle pressure with the use of essential oils.</td>
+<td class="h-[72px] px-6 py-2 text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">$110</td>
+<td class="h-[72px] px-6 py-2 text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">60 min</td>
+<td class="h-[72px] px-6 py-2">
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center size-8 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-primary/20 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button class="flex items-center justify-center size-8 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-red-500/20 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="border-t border-t-primary/20 dark:border-t-primary/20 hover:bg-primary/10 transition-colors">
+<td class="h-[72px] px-6 py-2 text-[#1b0d12] dark:text-white text-sm font-medium leading-normal">Hot Stone Massage</td>
+<td class="h-[72px] px-6 py-2 text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">Heated stones are placed on the body to soothe aching muscles.</td>
+<td class="h-[72px] px-6 py-2 text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">$150</td>
+<td class="h-[72px] px-6 py-2 text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">75 min</td>
+<td class="h-[72px] px-6 py-2">
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center size-8 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-primary/20 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button class="flex items-center justify-center size-8 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-red-500/20 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+
+<!-- Add / Edit Service Modal -->
+<div id="serviceModal" class=" fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+  <div class="w-full max-w-2xl rounded-xl bg-white dark:bg-background-dark p-6 shadow-2xl">
+    <div class="flex items-center justify-between pb-4 border-b border-border-light dark:border-border-dark">
+      <h3 id="serviceModalTitle" class="text-lg font-bold text-text-light dark:text-text-dark">Add New Service</h3>
+      <button id="closeServiceModal" class="text-gray-500 hover:text-primary transition-colors">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <form id="serviceForm" class="mt-6 space-y-6">
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div class="md:col-span-2">
+          <label class="block text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark mb-1" for="service-name">Service Name</label>
+          <input id="service-name" name="name" type="text" required class="block w-full rounded-lg border border-border-light dark:border-border-dark bg-white dark:bg-background-dark px-3 py-2 text-sm focus:border-primary focus:ring-primary" placeholder="e.g., Deep Tissue Massage"/>
+        </div>
+        <div class="md:col-span-2">
+          <label class="block text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark mb-1" for="service-description">Short Description</label>
+          <textarea id="service-description" name="description" rows="3" required class="block w-full rounded-lg border border-border-light dark:border-border-dark bg-white dark:bg-background-dark px-3 py-2 text-sm focus:border-primary focus:ring-primary" placeholder="Brief description of the service"></textarea>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark mb-1" for="service-price">Price</label>
+          <input id="service-price" name="price" type="number" min="0" step="0.01" required class="block w-full rounded-lg border border-border-light dark:border-border-dark bg-white dark:bg-background-dark px-3 py-2 text-sm focus:border-primary focus:ring-primary" placeholder="e.g., 120"/>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark mb-1" for="service-duration">Duration (minutes)</label>
+          <input id="service-duration" name="duration" type="number" min="0" step="5" required class="block w-full rounded-lg border border-border-light dark:border-border-dark bg-white dark:bg-background-dark px-3 py-2 text-sm focus:border-primary focus:ring-primary" placeholder="e.g., 60"/>
+        </div>
+        <div class="md:col-span-2">
+          <label class="block text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark mb-1" for="service-category">Category</label>
+          <input id="service-category" name="category" type="text" class="block w-full rounded-lg border border-border-light dark:border-border-dark bg-white dark:bg-background-dark px-3 py-2 text-sm focus:border-primary focus:ring-primary" placeholder="e.g., Massage, Facial"/>
+        </div>
+      </div>
+
+      <div class="flex justify-end gap-4 pt-4 border-t border-border-light dark:border-border-dark">
+        <button id="cancelServiceModal" type="button" class="flex min-w-[84px] items-center justify-center rounded-lg border border-border-light dark:border-border-dark bg-transparent px-4 py-2 text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark hover:bg-background-light/80 dark:hover:bg-background-dark/60 transition-colors">Cancel</button>
+        <button type="submit" class="flex min-w-[84px] items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-bold text-white hover:bg-primary/90 transition-colors">
+          <span class="material-symbols-outlined mr-1 text-sm">save</span>
+          <span>Save Service</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("serviceModal");
+    const openBtn = document.getElementById("openServiceModal");
+    const closeBtn = document.getElementById("closeServiceModal");
+    const cancelBtn = document.getElementById("cancelServiceModal");
+    const form = document.getElementById("serviceForm");
+
+    function openModal() {
+      if (!modal) return;
+      modal.classList.remove("hidden");
+    }
+
+    function closeModal() {
+      if (!modal) return;
+      modal.classList.add("hidden");
+      if (form) {
+        form.reset();
+      }
+    }
+
+    if (openBtn) {
+      openBtn.addEventListener("click", openModal);
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener("click", closeModal);
+    }
+
+    if (cancelBtn) {
+      cancelBtn.addEventListener("click", closeModal);
+    }
+
+    if (modal) {
+      modal.addEventListener("click", function (event) {
+        if (event.target === modal) {
+          closeModal();
+        }
+      });
+    }
+
+    if (form) {
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const serviceData = Object.fromEntries(formData.entries());
+        console.log("New service submitted:", serviceData);
+        // TODO: integrate with backend API to actually create / update service
+        closeModal();
+      });
+    }
+  });
+</script>
+</body></html>
