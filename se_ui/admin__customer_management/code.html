@@ -133,7 +133,14 @@
 <td class="h-[72px] px-4 py-2 text-sm text-text-secondary-light dark:text-textsecondary-dark">(555) 123-4567</td>
 <td class="h-[72px] px-4 py-2 text-sm text-text-secondary-light dark:text-text-secondary-dark text-center">8</td>
 <td class="h-[72px] px-4 py-2 text-sm font-bold text-right">
-<button class="text-primary hover:underline">View Details</button>
+  <button class="edit-customer-btn text-primary hover:underline"
+          data-name="Olivia Chen"
+          data-email="olivia.c@example.com"
+          data-phone="(555) 123-4567"
+          data-bookings="8"
+          data-notes="">
+    Edit
+  </button>
 </td>
 </tr>
 <tr class="border-t border-border-light dark:border-border-dark hover:bg-primary/5">
@@ -142,7 +149,14 @@
 <td class="h-[72px] px-4 py-2 text-sm text-text-secondary-light dark:text-textsecondary-dark">(555) 987-6543</td>
 <td class="h-[72px] px-4 py-2 text-sm text-text-secondary-light dark:text-text-secondary-dark text-center">5</td>
 <td class="h-[72px] px-4 py-2 text-sm font-bold text-right">
-<button class="text-primary hover:underline">View Details</button>
+  <button class="edit-customer-btn text-primary hover:underline"
+          data-name="Benjamin Carter"
+          data-email="ben.carter@example.com"
+          data-phone="(555) 987-6543"
+          data-bookings="5"
+          data-notes="">
+    Edit
+  </button>
 </td>
 </tr>
 <tr class="border-t border-border-light dark:border-border-dark hover:bg-primary/5">
@@ -151,7 +165,14 @@
 <td class="h-[72px] px-4 py-2 text-sm text-text-secondary-light dark:text-textsecondary-dark">(555) 234-5678</td>
 <td class="h-[72px] px-4 py-2 text-sm text-text-secondary-light dark:text-text-secondary-dark text-center">12</td>
 <td class="h-[72px] px-4 py-2 text-sm font-bold text-right">
-<button class="text-primary hover:underline">View Details</button>
+  <button class="edit-customer-btn text-primary hover:underline"
+          data-name="Sophia Rodriguez"
+          data-email="sophia.r@example.com"
+          data-phone="(555) 234-5678"
+          data-bookings="12"
+          data-notes="">
+    Edit
+  </button>
 </td>
 </tr>
 <tr class="border-t border-border-light dark:border-border-dark hover:bg-primary/5">
@@ -160,7 +181,14 @@
 <td class="h-[72px] px-4 py-2 text-sm text-text-secondary-light dark:text-textsecondary-dark">(555) 876-5432</td>
 <td class="h-[72px] px-4 py-2 text-sm text-text-secondary-light dark:text-text-secondary-dark text-center">3</td>
 <td class="h-[72px] px-4 py-2 text-sm font-bold text-right">
-<button class="text-primary hover:underline">View Details</button>
+  <button class="edit-customer-btn text-primary hover:underline"
+          data-name="Liam Goldberg"
+          data-email="liam.g@example.com"
+          data-phone="(555) 876-5432"
+          data-bookings="3"
+          data-notes="">
+    Edit
+  </button>
 </td>
 </tr>
 <tr class="border-t border-border-light dark:border-border-dark hover:bg-primary/5">
@@ -169,7 +197,14 @@
 <td class="h-[72px] px-4 py-2 text-sm text-text-secondary-light dark:text-textsecondary-dark">(555) 345-6789</td>
 <td class="h-[72px] px-4 py-2 text-sm text-text-secondary-light dark:text-text-secondary-dark text-center">6</td>
 <td class="h-[72px] px-4 py-2 text-sm font-bold text-right">
-<button class="text-primary hover:underline">View Details</button>
+  <button class="edit-customer-btn text-primary hover:underline"
+          data-name="Ava Nguyen"
+          data-email="ava.n@example.com"
+          data-phone="(555) 345-6789"
+          data-bookings="6"
+          data-notes="">
+    Edit
+  </button>
 </td>
 </tr>
 </tbody>
@@ -199,69 +234,211 @@
 </div>
 
 <!-- Add / Edit Customer Modal (HTML only, hidden by default) -->
-<div class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-    <div class="w-full max-w-xl rounded-xl bg-white dark:bg-surface-dark p-6 shadow-2xl">
-        <div class="flex items-center justify-between pb-4 border-b border-border-light dark:border-border-dark">
-            <h3 class="text-lg font-bold text-text-primary-light dark:text-text-primary-dark">
-                Add New Customer
-            </h3>
-            <button class="text-gray-500 hover:text-primary transition-colors">
-                <span class="material-symbols-outlined">close</span>
-            </button>
+<div id="customerModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+  <div class="w-full max-w-xl rounded-xl bg-white dark:bg-surface-dark p-6 shadow-2xl">
+    <div class="flex items-center justify-between pb-4 border-b border-border-light dark:border-border-dark">
+      <h3 id="customerModalTitle" class="text-lg font-bold text-text-primary-light dark:text-text-primary-dark">
+        Add New Customer
+      </h3>
+      <button id="closeCustomerModal" class="text-gray-500 hover:text-primary transition-colors">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <form id="customerForm" class="mt-6 space-y-6">
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div class="md:col-span-2">
+          <label class="block text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark mb-1" for="customer-name">
+            Full Name
+          </label>
+          <input id="customer-name" name="name" type="text"
+                 class="block w-full rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark px-3 py-2 text-sm focus:border-primary focus:ring-primary"
+                 placeholder="e.g., Olivia Chen"/>
         </div>
 
-        <form class="mt-6 space-y-6">
-            <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-                <div class="md:col-span-2">
-                    <label class="block text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark mb-1">
-                        Full Name
-                    </label>
-                    <input type="text"
-                           class="block w-full rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark px-3 py-2 text-sm focus:border-primary focus:ring-primary"
-                           placeholder="e.g., Olivia Chen"/>
-                </div>
+        <div class="md:col-span-2">
+          <label class="block text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark mb-1" for="customer-email">
+            Email
+          </label>
+          <input id="customer-email" name="email" type="email"
+                 class="block w-full rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark px-3 py-2 text-sm focus:border-primary focus:ring-primary"
+                 placeholder="e.g., olivia.c@example.com"/>
+        </div>
 
-                <div class="md:col-span-2">
-                    <label class="block text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark mb-1">
-                        Email
-                    </label>
-                    <input type="email"
-                           class="block w-full rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark px-3 py-2 text-sm focus:border-primary focus:ring-primary"
-                           placeholder="e.g., olivia.c@example.com"/>
-                </div>
+        <div class="md:col-span-2">
+          <label class="block text-sm font-medium text-text-secondary-light dark:text-textsecondary-dark mb-1" for="customer-phone">
+            Phone
+          </label>
+          <input id="customer-phone" name="phone" type="tel"
+                 class="block w-full rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark px-3 py-2 text-sm focus:border-primary focus:ring-primary"
+                 placeholder="e.g., (555) 123-4567"/>
+        </div>
 
-                <div class="md:col-span-2">
-                    <label class="block text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark mb-1">
-                        Phone
-                    </label>
-                    <input type="tel"
-                           class="block w-full rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark px-3 py-2 text-sm focus:border-primary focus:ring-primary"
-                           placeholder="e.g., (555) 123-4567"/>
-                </div>
+        <div class="md:col-span-2">
+          <label class="block text-sm font-medium text-text-secondary-light dark:text-textsecondary-dark mb-1" for="customer-notes">
+            Notes (optional)
+          </label>
+          <textarea id="customer-notes" name="notes" rows="3"
+                    class="block w-full rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark px-3 py-2 text-sm focus:border-primary focus:ring-primary"
+                    placeholder="Customer preferences or notes"></textarea>
+        </div>
+      </div>
 
-                <div class="md:col-span-2">
-                    <label class="block text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark mb-1">
-                        Notes (optional)
-                    </label>
-                    <textarea rows="3"
-                              class="block w-full rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark px-3 py-2 text-sm focus:border-primary focus:ring-primary"
-                              placeholder="Customer preferences or notes"></textarea>
-                </div>
-            </div>
-
-            <div class="flex justify-end gap-4 pt-4 border-t border-border-light dark:border-border-dark">
-                <button type="button"
-                        class="flex min-w-[84px] items-center justify-center rounded-lg border border-border-light dark:border-border-dark bg-transparent px-4 py-2 text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark hover:bg-background-light/80 dark:hover:bg-background-dark/60 transition-colors">
-                    Cancel
-                </button>
-                <button type="submit"
-                        class="flex min-w-[84px] items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-bold text-white hover:bg-primary/90 transition-colors">
-                    <span class="material-symbols-outlined mr-1 text-sm">save</span>
-                    <span>Save Customer</span>
-                </button>
-            </div>
-        </form>
-    </div>
+      <div class="flex justify-end gap-4 pt-4 border-t border-border-light dark:border-border-dark">
+        <button id="cancelCustomerModal" type="button"
+                class="flex min-w-[84px] items-center justify-center rounded-lg border border-border-light dark:border-border-dark bg-transparent px-4 py-2 text-sm font-medium text-text-secondary-light dark:text-textsecondary-dark hover:bg-background-light/80 dark:hover:bg-background-dark/60 transition-colors">
+          Cancel
+        </button>
+        <button type="submit"
+                class="flex min-w-[84px] items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-bold text-white hover:bg-primary/90 transition-colors">
+          <span class="material-symbols-outlined mr-1 text-sm">save</span>
+          <span>Save Customer</span>
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
 
+<script>
+  (function () {
+    const modal = document.getElementById('customerModal');
+    const form = document.getElementById('customerForm');
+    const titleEl = document.getElementById('customerModalTitle');
+    const openBtn = document.getElementById('openCustomerModal');
+    const closeBtn = document.getElementById('closeCustomerModal');
+    const cancelBtn = document.getElementById('cancelCustomerModal');
+    const saveBtn = form.querySelector('button[type="submit"]');
+    const tbody = document.querySelector('table tbody');
+
+    let currentEditingRow = null; // null = add mode, otherwise edit mode
+
+    function openModal(mode, data, rowEl) {
+      currentEditingRow = rowEl || null;
+
+      form.reset();
+
+      if (mode === 'edit' && data) {
+        titleEl.textContent = 'Edit Customer';
+        saveBtn.querySelector('span:last-child').textContent = 'Save Changes';
+
+        document.getElementById('customer-name').value = data.name || '';
+        document.getElementById('customer-email').value = data.email || '';
+        document.getElementById('customer-phone').value = data.phone || '';
+        document.getElementById('customer-notes').value = data.notes || '';
+      } else {
+        titleEl.textContent = 'Add New Customer';
+        saveBtn.querySelector('span:last-child').textContent = 'Save Customer';
+      }
+
+      modal.classList.remove('hidden');
+    }
+
+    function closeModal() {
+      modal.classList.add('hidden');
+      currentEditingRow = null;
+    }
+
+    // Open in Add mode
+    openBtn.addEventListener('click', () => {
+      openModal('add');
+    });
+
+    // Wire up existing edit buttons
+    document.querySelectorAll('.edit-customer-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const button = e.currentTarget;
+        const row = button.closest('tr');
+        const data = {
+          name: button.getAttribute('data-name'),
+          email: button.getAttribute('data-email'),
+          phone: button.getAttribute('data-phone'),
+          notes: button.getAttribute('data-notes') || '',
+          bookings: button.getAttribute('data-bookings') || ''
+        };
+        openModal('edit', data, row);
+      });
+    });
+
+    // Close handlers
+    closeBtn.addEventListener('click', closeModal);
+    cancelBtn.addEventListener('click', closeModal);
+
+    // Submit handler: add or update row
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('customer-name').value.trim();
+      const email = document.getElementById('customer-email').value.trim();
+      const phone = document.getElementById('customer-phone').value.trim();
+      const notes = document.getElementById('customer-notes').value.trim();
+
+      if (!name || !email || !phone) {
+        return;
+      }
+
+      if (currentEditingRow) {
+        const nameTd = currentEditingRow.querySelector('td:nth-child(1)');
+        const emailTd = currentEditingRow.querySelector('td:nth-child(2)');
+        const phoneTd = currentEditingRow.querySelector('td:nth-child(3)');
+        const bookingsTd = currentEditingRow.querySelector('td:nth-child(4)');
+        const editBtn = currentEditingRow.querySelector('.edit-customer-btn');
+
+        if (nameTd) nameTd.textContent = name;
+        if (emailTd) emailTd.textContent = email;
+        if (phoneTd) phoneTd.textContent = phone;
+
+        if (editBtn) {
+          editBtn.setAttribute('data-name', name);
+          editBtn.setAttribute('data-email', email);
+          editBtn.setAttribute('data-phone', phone);
+          editBtn.setAttribute('data-notes', notes);
+          if (bookingsTd) {
+            editBtn.setAttribute('data-bookings', bookingsTd.textContent.trim());
+          }
+        }
+      } else {
+        const tr = document.createElement('tr');
+        tr.className = 'border-t border-border-light dark:border-border-dark hover:bg-primary/5';
+        tr.innerHTML = `
+          <td class="h-[72px] px-4 py-2 text-sm font-medium">${name}</td>
+          <td class="h-[72px] px-4 py-2 text-sm text-text-secondary-light dark:text-text-secondary-dark">${email}</td>
+          <td class="h-[72px] px-4 py-2 text-sm text-text-secondary-light dark:text-textsecondary-dark">${phone}</td>
+          <td class="h-[72px] px-4 py-2 text-sm text-text-secondary-light dark:text-text-secondary-dark text-center">0</td>
+          <td class="h-[72px] px-4 py-2 text-sm font-bold text-right">
+            <button class="edit-customer-btn text-primary hover:underline">
+              Edit
+            </button>
+          </td>
+        `;
+
+        const bookingsTd = tr.querySelector('td:nth-child(4)');
+        const newEditBtn = tr.querySelector('.edit-customer-btn');
+        newEditBtn.setAttribute('data-name', name);
+        newEditBtn.setAttribute('data-email', email);
+        newEditBtn.setAttribute('data-phone', phone);
+        newEditBtn.setAttribute('data-notes', notes);
+        newEditBtn.setAttribute('data-bookings', bookingsTd ? bookingsTd.textContent.trim() : '0');
+
+        newEditBtn.addEventListener('click', (evt) => {
+          const button = evt.currentTarget;
+          const row = button.closest('tr');
+          const data = {
+            name: button.getAttribute('data-name'),
+            email: button.getAttribute('data-email'),
+            phone: button.getAttribute('data-phone'),
+            notes: button.getAttribute('data-notes') || '',
+            bookings: button.getAttribute('data-bookings') || ''
+          };
+          openModal('edit', data, row);
+        });
+
+        tbody.appendChild(tr);
+      }
+
+      closeModal();
+    });
+  })();
+</script>
+
 </body></html>
+

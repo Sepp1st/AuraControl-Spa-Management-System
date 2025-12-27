@@ -130,7 +130,12 @@
 <td class="h-[72px] px-6 py-2 text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">60 min</td>
 <td class="h-[72px] px-6 py-2">
 <div class="flex items-center gap-2">
-<button class="flex items-center justify-center size-8 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-primary/20 hover:text-primary transition-colors">
+<button class="edit-service-btn flex items-center justify-center size-8 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-primary/20 hover:text-primary transition-colors"
+        data-name="Deep Tissue Massage"
+        data-description="A therapeutic massage focusing on deeper layers of muscle tissue."
+        data-price="120"
+        data-duration="60"
+        data-category="Massage">
 <span class="material-symbols-outlined text-xl">edit</span>
 </button>
 <button class="flex items-center justify-center size-8 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-red-500/20 hover:text-red-500 transition-colors">
@@ -146,7 +151,12 @@
 <td class="h-[72px] px-6 py-2 text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">50 min</td>
 <td class="h-[72px] px-6 py-2">
 <div class="flex items-center gap-2">
-<button class="flex items-center justify-center size-8 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-primary/20 hover:text-primary transition-colors">
+<button class="edit-service-btn flex items-center justify-center size-8 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-primary/20 hover:text-primary transition-colors"
+        data-name="Signature Facial"
+        data-description="Our classic facial for radiant, glowing skin."
+        data-price="95"
+        data-duration="50"
+        data-category="Facial">
 <span class="material-symbols-outlined text-xl">edit</span>
 </button>
 <button class="flex items-center justify-center size-8 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-red-500/20 hover:text-red-500 transition-colors">
@@ -162,7 +172,12 @@
 <td class="h-[72px] px-6 py-2 text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">60 min</td>
 <td class="h-[72px] px-6 py-2">
 <div class="flex items-center gap-2">
-<button class="flex items-center justify-center size-8 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-primary/20 hover:text-primary transition-colors">
+<button class="edit-service-btn flex items-center justify-center size-8 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-primary/20 hover:text-primary transition-colors"
+        data-name="Aromatherapy Massage"
+        data-description="Combines soft, gentle pressure with the use of essential oils."
+        data-price="110"
+        data-duration="60"
+        data-category="Massage">
 <span class="material-symbols-outlined text-xl">edit</span>
 </button>
 <button class="flex items-center justify-center size-8 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-red-500/20 hover:text-red-500 transition-colors">
@@ -178,7 +193,12 @@
 <td class="h-[72px] px-6 py-2 text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">75 min</td>
 <td class="h-[72px] px-6 py-2">
 <div class="flex items-center gap-2">
-<button class="flex items-center justify-center size-8 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-primary/20 hover:text-primary transition-colors">
+<button class="edit-service-btn flex items-center justify-center size-8 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-primary/20 hover:text-primary transition-colors"
+        data-name="Hot Stone Massage"
+        data-description="Heated stones are placed on the body to soothe aching muscles."
+        data-price="150"
+        data-duration="75"
+        data-category="Massage">
 <span class="material-symbols-outlined text-xl">edit</span>
 </button>
 <button class="flex items-center justify-center size-8 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-red-500/20 hover:text-red-500 transition-colors">
@@ -198,7 +218,7 @@
 </div>
 
 <!-- Add / Edit Service Modal -->
-<div id="serviceModal" class=" fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+<div id="serviceModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
   <div class="w-full max-w-2xl rounded-xl bg-white dark:bg-background-dark p-6 shadow-2xl">
     <div class="flex items-center justify-between pb-4 border-b border-border-light dark:border-border-dark">
       <h3 id="serviceModalTitle" class="text-lg font-bold text-text-light dark:text-text-dark">Add New Service</h3>
@@ -225,8 +245,26 @@
           <input id="service-duration" name="duration" type="number" min="0" step="5" required class="block w-full rounded-lg border border-border-light dark:border-border-dark bg-white dark:bg-background-dark px-3 py-2 text-sm focus:border-primary focus:ring-primary" placeholder="e.g., 60"/>
         </div>
         <div class="md:col-span-2">
-          <label class="block text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark mb-1" for="service-category">Category</label>
-          <input id="service-category" name="category" type="text" class="block w-full rounded-lg border border-border-light dark:border-border-dark bg-white dark:bg-background-dark px-3 py-2 text-sm focus:border-primary focus:ring-primary" placeholder="e.g., Massage, Facial"/>
+          <label class="block text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark mb-1" for="service-category">Categories</label>
+          <div id="service-categories" class="grid grid-cols-2 gap-2">
+            <label class="flex items-center gap-2">
+              <input type="checkbox" name="service-category" value="Massage" class="rounded border-border-light dark:border-border-dark text-primary focus:ring-primary">
+              <span class="text-sm text-text-secondary-light dark:text-text-secondary-dark">Massage</span>
+            </label>
+            <label class="flex items-center gap-2">
+              <input type="checkbox" name="service-category" value="Facial" class="rounded border-border-light dark:border-border-dark text-primary focus:ring-primary">
+              <span class="text-sm text-text-secondary-light dark:text-text-secondary-dark">Facial</span>
+            </label>
+            <label class="flex items-center gap-2">
+              <input type="checkbox" name="service-category" value="Body" class="rounded border-border-light dark:border-border-dark text-primary focus:ring-primary">
+              <span class="text-sm text-text-secondary-light dark:text-text-secondary-dark">Body Treatment</span>
+            </label>
+            <label class="flex items-center gap-2">
+              <input type="checkbox" name="service-category" value="Add-on" class="rounded border-border-light dark:border-border-dark text-primary focus:ring-primary">
+              <span class="text-sm text-text-secondary-light dark:text-text-secondary-dark">Add-on</span>
+            </label>
+          </div>
+          <p class="mt-1 text-xs text-text-subtle-light dark:text-text-subtle-dark">Select one or more categories this service belongs to.</p>
         </div>
       </div>
 
@@ -242,56 +280,178 @@
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const modal = document.getElementById("serviceModal");
-    const openBtn = document.getElementById("openServiceModal");
-    const closeBtn = document.getElementById("closeServiceModal");
-    const cancelBtn = document.getElementById("cancelServiceModal");
-    const form = document.getElementById("serviceForm");
+  (function () {
+    const modal = document.getElementById('serviceModal');
+    const form = document.getElementById('serviceForm');
+    const titleEl = document.getElementById('serviceModalTitle');
+    const openBtn = document.getElementById('openServiceModal');
+    const closeBtn = document.getElementById('closeServiceModal');
+    const cancelBtn = document.getElementById('cancelServiceModal');
+    const saveBtn = form.querySelector('button[type="submit"]');
+    const tbody = document.querySelector('table tbody');
 
-    function openModal() {
-      if (!modal) return;
-      modal.classList.remove("hidden");
+    let currentEditingRow = null; // null = add, otherwise edit
+
+    function setCategoryCheckboxes(categories) {
+      const values = Array.isArray(categories) ? categories : [];
+      document.querySelectorAll('input[name="service-category"]').forEach(cb => {
+        cb.checked = values.includes(cb.value);
+      });
+    }
+
+    function getSelectedCategories() {
+      return Array.from(document.querySelectorAll('input[name="service-category"]:checked')).map(cb => cb.value);
+    }
+
+    function openModal(mode, data, rowEl) {
+      currentEditingRow = rowEl || null;
+
+      form.reset();
+      setCategoryCheckboxes([]);
+
+      if (mode === 'edit' && data) {
+        titleEl.textContent = 'Edit Service';
+        saveBtn.querySelector('span:last-child').textContent = 'Save Changes';
+
+        document.getElementById('service-name').value = data.name || '';
+        document.getElementById('service-description').value = data.description || '';
+        document.getElementById('service-price').value = data.price || '';
+        document.getElementById('service-duration').value = data.duration || '';
+
+        const categories = data.categories && data.categories.length
+          ? data.categories
+          : (data.category ? data.category.split(',').map(s => s.trim()).filter(Boolean) : []);
+        setCategoryCheckboxes(categories);
+      } else {
+        titleEl.textContent = 'Add New Service';
+        saveBtn.querySelector('span:last-child').textContent = 'Save Service';
+      }
+
+      modal.classList.remove('hidden');
     }
 
     function closeModal() {
-      if (!modal) return;
-      modal.classList.add("hidden");
-      if (form) {
-        form.reset();
+      modal.classList.add('hidden');
+      currentEditingRow = null;
+    }
+
+    // Open in Add mode
+    openBtn.addEventListener('click', () => {
+      openModal('add');
+    });
+
+    // Wire up existing edit buttons
+    document.querySelectorAll('.edit-service-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const button = e.currentTarget;
+        const row = button.closest('tr');
+        const categoriesAttr = button.getAttribute('data-categories') || button.getAttribute('data-category') || '';
+        const categories = categoriesAttr
+          ? categoriesAttr.split(',').map(s => s.trim()).filter(Boolean)
+          : [];
+        const data = {
+          name: button.getAttribute('data-name'),
+          description: button.getAttribute('data-description'),
+          price: button.getAttribute('data-price'),
+          duration: button.getAttribute('data-duration'),
+          categories
+        };
+        openModal('edit', data, row);
+      });
+    });
+
+    // Close handlers
+    closeBtn.addEventListener('click', closeModal);
+    cancelBtn.addEventListener('click', closeModal);
+
+    // Submit handler: add or update row
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('service-name').value.trim();
+      const description = document.getElementById('service-description').value.trim();
+      const priceValue = document.getElementById('service-price').value.trim();
+      const durationValue = document.getElementById('service-duration').value.trim();
+      const categories = getSelectedCategories();
+
+      if (!name || !description || !priceValue || !durationValue) {
+        return;
       }
-    }
 
-    if (openBtn) {
-      openBtn.addEventListener("click", openModal);
-    }
+      const priceDisplay = `$${parseFloat(priceValue).toFixed(0)}`; // simple display formatting
+      const durationDisplay = `${parseInt(durationValue, 10)} min`;
+      const categoriesAttr = categories.join(', ');
 
-    if (closeBtn) {
-      closeBtn.addEventListener("click", closeModal);
-    }
+      if (currentEditingRow) {
+        const nameTd = currentEditingRow.querySelector('td:nth-child(1)');
+        const descTd = currentEditingRow.querySelector('td:nth-child(2)');
+        const priceTd = currentEditingRow.querySelector('td:nth-child(3)');
+        const durationTd = currentEditingRow.querySelector('td:nth-child(4)');
+        const editBtn = currentEditingRow.querySelector('.edit-service-btn');
 
-    if (cancelBtn) {
-      cancelBtn.addEventListener("click", closeModal);
-    }
+        if (nameTd) nameTd.textContent = name;
+        if (descTd) descTd.textContent = description;
+        if (priceTd) priceTd.textContent = priceDisplay;
+        if (durationTd) durationTd.textContent = durationDisplay;
 
-    if (modal) {
-      modal.addEventListener("click", function (event) {
-        if (event.target === modal) {
-          closeModal();
+        if (editBtn) {
+          editBtn.setAttribute('data-name', name);
+          editBtn.setAttribute('data-description', description);
+          editBtn.setAttribute('data-price', priceValue);
+          editBtn.setAttribute('data-duration', durationValue);
+          editBtn.setAttribute('data-categories', categoriesAttr);
         }
-      });
-    }
+      } else {
+        const tr = document.createElement('tr');
+        tr.className = 'border-t border-t-primary/20 dark:border-t-primary/20 hover:bg-primary/10 transition-colors';
+        tr.innerHTML = `
+          <td class="h-[72px] px-6 py-2 text-[#1b0d12] dark:text-white text-sm font-medium leading-normal">${name}</td>
+          <td class="h-[72px] px-6 py-2 text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">${description}</td>
+          <td class="h-[72px] px-6 py-2 text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">${priceDisplay}</td>
+          <td class="h-[72px] px-6 py-2 text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">${durationDisplay}</td>
+          <td class="h-[72px] px-6 py-2">
+            <div class="flex items-center gap-2">
+              <button class="edit-service-btn flex items-center justify-center size-8 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-primary/20 hover:text-primary transition-colors">
+                <span class="material-symbols-outlined text-xl">edit</span>
+              </button>
+              <button class="flex items-center justify-center size-8 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-red-500/20 hover:text-red-500 transition-colors">
+                <span class="material-symbols-outlined text-xl">delete</span>
+              </button>
+            </div>
+          </td>
+        `;
 
-    if (form) {
-      form.addEventListener("submit", function (event) {
-        event.preventDefault();
-        const formData = new FormData(form);
-        const serviceData = Object.fromEntries(formData.entries());
-        console.log("New service submitted:", serviceData);
-        // TODO: integrate with backend API to actually create / update service
-        closeModal();
-      });
-    }
-  });
+        const newEditBtn = tr.querySelector('.edit-service-btn');
+        newEditBtn.setAttribute('data-name', name);
+        newEditBtn.setAttribute('data-description', description);
+        newEditBtn.setAttribute('data-price', priceValue);
+        newEditBtn.setAttribute('data-duration', durationValue);
+        newEditBtn.setAttribute('data-categories', categoriesAttr);
+
+        newEditBtn.addEventListener('click', (evt) => {
+          const button = evt.currentTarget;
+          const row = button.closest('tr');
+          const categoriesAttr = button.getAttribute('data-categories') || '';
+          const categories = categoriesAttr
+            ? categoriesAttr.split(',').map(s => s.trim()).filter(Boolean)
+            : [];
+          const data = {
+            name: button.getAttribute('data-name'),
+            description: button.getAttribute('data-description'),
+            price: button.getAttribute('data-price'),
+            duration: button.getAttribute('data-duration'),
+            categories
+          };
+          openModal('edit', data, row);
+        });
+
+        tbody.appendChild(tr);
+      }
+
+      closeModal();
+    });
+  })();
 </script>
-</body></html>
+
+</body>
+</html>

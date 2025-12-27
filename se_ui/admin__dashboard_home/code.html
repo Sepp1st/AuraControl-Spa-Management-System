@@ -104,46 +104,38 @@
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 ">
 <div class="flex flex-col gap-2 rounded-xl p-6 border bg-background-light/70 bg-surface-light dark:bg-background-dark/50 border-border-light dark:border-border-dark">
 <p class="text-text-light dark:text-text-dark text-base font-medium leading-normal">Today's Revenue</p>
-<p class="text-text-light dark:text-text-dark tracking-light text-3xl font-bold leading-tight">$1,250</p>
-<p class="text-success text-sm font-medium leading-normal">+5.2% vs yesterday</p>
+<p id="stat-today-revenue" class="text-text-light dark:text-text-dark tracking-light text-3xl font-bold leading-tight">$1,250</p>
 </div>
 <div class="bg-surface-light dark:bg-surface-dark rounded-xl p-6 shadow-sm flex flex-col gap-2 rounded-xl p-6 border bg-background-light/70 dark:bg-background-dark/50 border-border-light dark:border-border-dark">
 <p class="text-text-light dark:text-text-dark text-base font-medium leading-normal">New Appointments</p>
-<p class="text-text-light dark:text-text-dark tracking-light text-3xl font-bold leading-tight">12</p>
-<p class="text-success text-sm font-medium leading-normal">+10% vs yesterday</p>
+<p id="stat-new-appointments" class="text-text-light dark:text-text-dark tracking-light text-3xl font-bold leading-tight">12</p>
 </div>
 <div class="bg-surface-light dark:bg-surface-dark rounded-xl p-6 shadow-sm flex flex-col gap-2 rounded-xl p-6 border bg-background-light/70 dark:bg-background-dark/50 border-border-light dark:border-border-dark">
 <p class="text-text-light dark:text-text-dark text-base font-medium leading-normal">New Customers</p>
-<p class="text-text-light dark:text-text-dark tracking-light text-3xl font-bold leading-tight">5</p>
-<p class="text-success text-sm font-medium leading-normal">+2.5% vs yesterday</p>
+<p id="stat-new-customers" class="text-text-light dark:text-text-dark tracking-light text-3xl font-bold leading-tight">5</p>
 </div>
 <div class="bg-surface-light dark:bg-surface-dark rounded-xl p-6 shadow-sm flex flex-col gap-2 rounded-xl p-6 border bg-background-light/70 dark:bg-background-dark/50 border-border-light dark:border-border-dark">
 <p class="text-text-light dark:text-text-dark text-base font-medium leading-normal">Pending Requests</p>
-<p class="text-text-light dark:text-text-dark tracking-light text-3xl font-bold leading-tight">3</p>
-<p class="text-text-subtle-light dark:text-text-subtle-dark text-sm font-medium leading-normal">Action required</p>
+<p id="stat-pending-requests" class="text-text-light dark:text-text-dark tracking-light text-3xl font-bold leading-tight">3</p>
 </div>
 </div>
 <!-- Revenue Chart Container -->
 <div class="bg-surface-light dark:bg-surface-dark rounded-xl p-6 shadow-sm bg-background-light/70 dark:bg-background-dark/50 border border-border-light dark:border-border-dark rounded-xl p-6 mb-8">
-<div class="flex flex-wrap justify-between items-center gap-4 mb-4">
-<h2 class="text-text-light dark:text-text-dark text-lg font-bold leading-tight">Revenue Overview</h2>
-<!-- Chips for time period -->
-<div class="flex gap-2">
-<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary-soft dark:bg-primary-soft-dark px-4">
-<p class="text-text-light dark:text-text-dark text-sm font-medium leading-normal">This Week</p>
-</button>
-<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg hover:bg-primary-soft dark:hover:bg-primary-soft-dark px-4">
-<p class="text-text-subtle-light dark:text-text-subtle-dark text-sm font-medium leading-normal">This Month</p>
-</button>
-<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg hover:bg-primary-soft dark:hover:bg-primary-soft-dark px-4">
-<p class="text-text-subtle-light dark:text-text-subtle-dark text-sm font-medium leading-normal">This Year</p>
-</button>
-</div>
-</div>
-<!-- Chart Placeholder -->
-<div class="flex items-center justify-center h-80 bg-background-light dark:bg-background-dark rounded-lg">
-<img alt="A bar chart showing revenue for the week, with vertical bars of varying heights against a horizontal axis." class="w-full h-full object-contain filter dark:invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZu9Q9qR2GWYqwDCNXSfdbi8FxLX-_YasrNJwMCTWTcOB4_hxI9j6iGJF2KY_KtIESKKinjsGEAaG7RjGN0k3LCfrIbgR1eYSkN4kL7jHS3pBkfIs-R1as5lF4xjWH4iA9Huov2qlpGAfoAwMRp41OX4Z8GkgR0QKXNwJMNPo5IYCx9kfRQI0m6hak1pIeFY_KmN6atij3sOPuCxAKU9ksroG_cRWAMQ77emv3Mv8ARUtaPaDH_wWgN7T0qU6LLWHbQiyDRZkA8o4J"/>
-</div>
+  <div class="flex flex-wrap justify-between items-center gap-4 mb-4">
+    <h2 class="text-text-light dark:text-text-dark text-lg font-bold leading-tight">Revenue Overview</h2>
+    <div class="flex items-center gap-2 text-sm">
+      <span class="text-text-secondary-light dark:text-text-secondary-dark">Range:</span>
+      <div class="inline-flex rounded-full border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark p-0.5">
+        <button type="button" data-range="week" class="revenue-range-btn px-3 py-1 rounded-full text-xs font-medium text-text-secondary-light dark:text-text-secondary-dark bg-primary text-white">Week</button>
+        <button type="button" data-range="month" class="revenue-range-btn px-3 py-1 rounded-full text-xs font-medium text-text-secondary-light dark:text-text-secondary-dark">Month</button>
+        <button type="button" data-range="year" class="revenue-range-btn px-3 py-1 rounded-full text-xs font-medium text-text-secondary-light dark:text-text-secondary-dark">Year</button>
+      </div>
+    </div>
+  </div>
+  <!-- Simple Bar Chart -->
+  <div id="revenue-chart" class="flex items-end justify-between gap-3 h-64 px-4 pb-4 border border-border-light dark:border-border-dark rounded-lg bg-background-light dark:bg-background-dark">
+    <!-- Bars will be populated by JS -->
+  </div>
 </div>
 <!-- Recent Appointments Table -->
 <div class="bg-surface-light dark:bg-surface-dark rounded-xl p-6 shadow-sm bg-background-light/70 dark:bg-background-dark/50 border border-border-light dark:border-border-dark rounded-xl p-6">
@@ -196,4 +188,89 @@
 </div>
 </main>
 </div>
+<script>
+  (function () {
+    const chartEl = document.getElementById('revenue-chart');
+    const rangeButtons = document.querySelectorAll('.revenue-range-btn');
+
+    if (!chartEl || !rangeButtons.length) return;
+
+    const datasets = {
+      week: {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        values: [180, 220, 150, 260, 310, 280, 190]
+      },
+      month: {
+        labels: ['W1', 'W2', 'W3', 'W4'],
+        values: [3200, 2800, 3500, 3900]
+      },
+      year: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        values: [12000, 11500, 14000, 15500, 16200, 17000, 18000, 17500, 16000, 15800, 14900, 16500]
+      }
+    };
+
+    function setActiveRange(activeKey) {
+      rangeButtons.forEach(btn => {
+        const isActive = btn.getAttribute('data-range') === activeKey;
+        btn.classList.toggle('bg-primary', isActive);
+        btn.classList.toggle('text-white', isActive);
+        btn.classList.toggle('text-text-secondary-light', !isActive);
+        btn.classList.toggle('dark:text-text-secondary-dark', !isActive);
+      });
+    }
+
+    function renderChart(rangeKey) {
+      const data = datasets[rangeKey] || datasets.week;
+      const max = Math.max(...data.values) || 1;
+
+      chartEl.innerHTML = '';
+
+      data.labels.forEach((label, idx) => {
+        const value = data.values[idx];
+        const heightPercent = (value / max) * 100;
+
+        const barWrapper = document.createElement('div');
+        barWrapper.className = 'flex flex-1 flex-col items-center justify-end gap-2 min-w-[2rem]';
+
+        const valueLabel = document.createElement('div');
+        valueLabel.className = 'text-[11px] text-text-secondary-light dark:text-text-secondary-dark';
+        valueLabel.textContent = `$${value.toLocaleString()}`;
+
+        const barTrack = document.createElement('div');
+        barTrack.className = 'w-6 h-full flex items-end justify-center overflow-hidden rounded-t-full bg-primary/10 dark:bg-primary/20';
+
+        const barFill = document.createElement('div');
+        barFill.className = 'w-full bg-primary dark:bg-primary rounded-t-full';
+        barFill.style.height = heightPercent + '%';
+
+        barTrack.appendChild(barFill);
+
+        const labelEl = document.createElement('div');
+        labelEl.className = 'text-[11px] text-text-secondary-light dark:text-text-secondary-dark';
+        labelEl.textContent = label;
+
+        barWrapper.appendChild(valueLabel);
+        barWrapper.appendChild(barTrack);
+        barWrapper.appendChild(labelEl);
+
+        chartEl.appendChild(barWrapper);
+      });
+    }
+
+    let currentRange = 'week';
+    setActiveRange(currentRange);
+    renderChart(currentRange);
+
+    rangeButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const rangeKey = btn.getAttribute('data-range');
+        if (!rangeKey || rangeKey === currentRange) return;
+        currentRange = rangeKey;
+        setActiveRange(currentRange);
+        renderChart(currentRange);
+      });
+    });
+  })();
+</script>
 </body></html>
